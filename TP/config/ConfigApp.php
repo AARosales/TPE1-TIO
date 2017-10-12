@@ -21,6 +21,8 @@ class ConfigApp
       'guardarCategoria'=> 'CategoriaController#store',
       'borrarCategoria' => 'CategoriaController#destroy',
       'finalizarCategoria' => 'CategoriaController#finish',
+      'editarCategoria'=> 'CategoriaController#edit',
+
 
       'agregarProducto'=> 'ProductoController#create',
       'guardarProducto'=> 'ProductoController#store',

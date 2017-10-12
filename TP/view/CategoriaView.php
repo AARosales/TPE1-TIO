@@ -2,6 +2,12 @@
 class CategoriaView extends View
 {
   function mostrarCategoria($categorias, $invitado){
+    if(isset($_SESSION['USER'])){
+      $this->smarty->assign('isAdmin', true);
+    }
+    else {
+      $this->smarty->assign('isAdmin', false);
+    }
     $this->smarty->assign('categorias', $categorias);
     $this->smarty->assign('invitado', $invitado);
     $this->smarty->display('templates/index.tpl');
@@ -12,6 +18,13 @@ class CategoriaView extends View
     $this->smarty->assign('invitado', $invitado);
     $this->smarty->display('templates/formCrear.tpl');
   }
+
+  function mostrarEditar($categoria){
+
+    $this->smarty->assign('categoria', $categoria);
+    $this->smarty->display('templates/CategoriaEditar.tpl');
+  }
+
 
   function errorCrear($error, $nombre, $descripcion){
     $this->assignarCategoriaForm($nombre, $descripcion);
@@ -26,4 +39,4 @@ class CategoriaView extends View
 
 }
 
- ?>
+?>

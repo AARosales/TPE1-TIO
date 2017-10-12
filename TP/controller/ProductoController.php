@@ -4,7 +4,6 @@ include_once('view/ProductoView.php');
 
 class ProductoController extends SecuredController
 {
-  //private $palabrasProhibidasModel;
 
   function __construct()
   {
@@ -17,9 +16,8 @@ class ProductoController extends SecuredController
   {
     $invitado = SecuredController::getUser();
 
-      $productos = $this->model->getProductos();
-      $this->view->mostrarProductos($productos, $invitado);
-
+    $productos = $this->model->getProductos();
+    $this->view->mostrarProductos($productos, $invitado);
   }
 
   public function create()
@@ -29,10 +27,10 @@ class ProductoController extends SecuredController
       $categoriaModel = new categoriaModel();
       $categoria = $categoriaModel->getCategoria();
       $this->view->mostrarCrearProducto($categoria,$invitado);
-      }
-      else {
-        header('Location: '.PRODUCTO);
-      }
+    }
+    else {
+      header('Location: '.PRODUCTO);
+    }
   }
 
   public function store()
@@ -46,11 +44,11 @@ class ProductoController extends SecuredController
     if(isset($_POST['id_categoria']) && !empty($_POST['id_categoria'])){
       $this->model->guardarProducto($id_categoria, $precio, $color, $talle, $stock);
       header('Location: '.PRODUCTO);
-      }
-      else{
-          $this->view->errorCrear("El campo id_categoria es requerido", $id_categoria, $precio, $color, $talle);
-      }
     }
+    else{
+      $this->view->errorCrear("El campo id_categoria es requerido", $id_categoria, $precio, $color, $talle);
+    }
+  }
   public function destroy($params)
   {
     $id = $params[0];
@@ -64,7 +62,6 @@ class ProductoController extends SecuredController
     $this->model->finalizarProducto($id);
     header('Location: '.PRODUCTO);
   }
-
 }
 
- ?>
+?>

@@ -3,6 +3,12 @@ class ProductoView extends View
 {
 
   function mostrarProductos($productos, $invitado){
+    if(isset($_SESSION['USER'])){
+      $this->smarty->assign('isAdmin', true);
+    }
+    else {
+      $this->smarty->assign('isAdmin', false);
+    }
       $this->smarty->assign('productos', $productos);
       $this->smarty->assign('invitado', $invitado);
       $this->smarty->display('templates/Producto/index.tpl');
@@ -11,7 +17,7 @@ class ProductoView extends View
   function mostrarCrearProducto($categoria,$invitado){
     $this->assignarProductoForm();
     $this->smarty->assign('invitado', $invitado);
-      $this->smarty->assign('categorias', $categoria);
+    $this->smarty->assign('categorias', $categoria);
     $this->smarty->display('templates/formCrearProducto.tpl');
   }
 

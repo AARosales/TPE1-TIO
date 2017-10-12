@@ -17,12 +17,32 @@ class CategoriaModel extends Model
     if($invitado!==false){
       $sentencia = $this->db->prepare("delete from categoria where id=?");
       $sentencia->execute([$id]);
-      }
-        else {
-          header('Location: '.PRODUCTO);
-        }
+    }
+    else {
+      header('Location: '.PRODUCTO);
+    }
   }
+
+  function editarCategoria($id, $nombre, $descripcion){
+    $invitado = SecuredController::getUser();
+    if($invitado!==false){
+      $sentencia = $this->db->prepare("update categoria set nombre=?, descripcion=? where id=?");
+      $sentencia->execute([$nombre, $descripcion, $id]);
+    }
+  }
+
+  function getCategoriaById($id){
+    $invitado = SecuredController::getUser();
+    if($invitado!==false){
+      $sentencia = $this->db->prepare("select * from categoria where id = ?");
+
+      $sentencia->execute([$id]);
+      $result = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+      return $result[0];
+    }
+  }
+
 }
 
 
- ?>
+?>

@@ -12,4 +12,4 @@ class View
     $this->smarty->assign('titulo', 'Indumentaria');
   }
 }
- ?>
+?>

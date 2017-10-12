@@ -10,7 +10,6 @@ include_once 'controller/Controller.php';
 include_once 'controller/SecuredController.php';
 include_once 'controller/CategoriaController.php';
 include_once 'controller/ProductoController.php';
-// include_once 'controller/ProductoController.php';
 include_once 'controller/LoginController.php';
 
 
@@ -23,20 +22,20 @@ function parseURL($url)
 }
 
 if(isset($_GET['action'])){
-   $urlData = parseURL($_GET['action']);
-    $action = $urlData[ConfigApp::$ACTION]; //home
-    if(array_key_exists($action,ConfigApp::$ACTIONS)){
-        $params = $urlData[ConfigApp::$PARAMS];
-        $action = explode('#',ConfigApp::$ACTIONS[$action]); //Array[0] -> TareasController [1] -> index
-        $controller =  new $action[0]();
-        $metodo = $action[1];
-        if(isset($params) &&  $params != null){
-            echo $controller->$metodo($params);
-        }
-        else{
-            echo $controller->$metodo();
-        }
+  $urlData = parseURL($_GET['action']);
+  $action = $urlData[ConfigApp::$ACTION]; //home
+  if(array_key_exists($action,ConfigApp::$ACTIONS)){
+    $params = $urlData[ConfigApp::$PARAMS];
+    $action = explode('#',ConfigApp::$ACTIONS[$action]); //Array[0] -> TareasController [1] -> index
+    $controller =  new $action[0]();
+    $metodo = $action[1];
+    if(isset($params) &&  $params != null){
+      echo $controller->$metodo($params);
     }
+    else{
+      echo $controller->$metodo();
+    }
+  }
 }
 
- ?>
+?>

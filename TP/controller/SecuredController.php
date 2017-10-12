@@ -14,8 +14,7 @@ class SecuredController extends Controller
       $_SESSION['LAST_ACTIVITY'] = time();
     }
     else {
-    //  header('Location: '.LOGIN);
-    //  die();
+    
     }
   }
 
@@ -26,9 +25,9 @@ class SecuredController extends Controller
     else{
       return false;
     }
-    }
-
   }
 
+}
 
- ?>
+
+?>

@@ -1,8 +1,8 @@
-{include file="header.tpl"}
+{include file="header.tpl"}{include file="style.tpl"}
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     {if isset($error) }
-      <div class="alert alert-danger" role="alert">{$error}</div>
+    <div class="alert alert-danger" role="alert">{$error}</div>
     {/if}
     <h1>Nuevo Producto</h1>
     <form action="guardarProducto" method="post">
@@ -10,8 +10,8 @@
         <label for="id_categoria"></label>
         <select name='id_categoria'>
           {foreach from=$categorias item=categoria}
-           <option value= '{$categoria['id']}'>{$categoria['nombre']}</option>
-           {/foreach}
+          <option value= '{$categoria['id']}'>{$categoria['nombre']}</option>
+          {/foreach}
         </select>
       </div>
       <div class="form-group">

@@ -18,6 +18,9 @@
       <li class="nav-item">
         <a class="nav-link disabled" href="listaCategorias">Lista de Categorias</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="quienesSomos">Quienes somos</a>
+      </li>
     </ul>
     <ul class="nav nav-tabs">
       {if $invitado}
